@@ -1,0 +1,72 @@
+﻿<Window x:Class="CipherApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Лабораторная работа 1, Ращеня Роман" Height="450" Width="650" WindowStartupLocation="CenterScreen" FontFamily="Consolas" FontSize="18" Background="#FFFFCBFD" Foreground="Black" Icon="/458e1e02f02bde900fe0dbb7c2f6f3de.jpg" BorderBrush="White">
+    <Window.Resources>
+        <Style TargetType="Label">
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="Margin" Value="0,0,0,10"/>
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="BorderBrush" Value="#FFFFAEFE"/>
+            <Setter Property="BorderThickness" Value="1"/>
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Padding" Value="10,5"/>
+            <Setter Property="Background" Value="#FFEA70FF"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderBrush" Value="#FFDF67FF"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#FF005999"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style TargetType="ComboBox">
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="BorderBrush" Value="#FFFF8FF6"/>
+            <Setter Property="BorderThickness" Value="1"/>
+        </Style>
+    </Window.Resources>
+    <Grid Margin="20" Background="#FFFFDAFE">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,10">
+            <Label Content="Метод:" Width="100"/>
+            <ComboBox x:Name="MethodCombo" Width="350"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,0,0,10">
+            <Label Content="Ключ:" Width="100"/>
+            <TextBox x:Name="KeyTextBox" Width="350" TextChanged="KeyTextBox_TextChanged"/>
+        </StackPanel>
+
+        <Label Grid.Row="2" Content="Исходный текст:" Margin="0,0,0,5"/>
+        <Button Grid.Row="1" Content="Чтение из файла" FontSize ="16" Click="ReadFile_Click" Margin="383,53,18,10" Grid.RowSpan="2"/>
+
+        <TextBox x:Name="InputTextBox" Grid.Row="3" AcceptsReturn="True" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" TextChanged="InputTextBox_TextChanged"/>
+
+        <Label Grid.Row="4" Content="Результирующий текст:" Margin="0,0,0,5"/>
+
+        <TextBox x:Name="ResultTextBox" Grid.Row="5" AcceptsReturn="True" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" IsReadOnly="True"/>
+
+        <StackPanel Grid.Row="6" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,0,0">
+            <Button Content="Сохранить" Click="Info_Click"/>
+            <Button Content="Шифровать" Click="Encrypt_Click"/>
+            <Button Content="Дешифровать" Click="Decrypt_Click"/>
+            <Button Content="Очистить" Click="Clear_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>
